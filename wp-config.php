@@ -31,12 +31,12 @@ if ( IS_DEBUG_MODE ) {
     define( 'SCRIPT_DEBUG', true );
     define( 'SAVEQUERIES', true );
     define( 'JETPACK_DEV_DEBUG', true );
-    define( 'FORCE_SSL_ADMIN', false );
-    define( 'FORCE_SSL_LOGIN', false );
-    define( 'DISALLOW_FILE_EDIT', true );
-    define( 'DISALLOW_FILE_MODS', true );
-    define( 'AUTOMATIC_UPDATER_DISABLED', true );
-    define( 'WP_AUTO_UPDATE_CORE', false );
+    define( 'FORCE_SSL_ADMIN', true );
+    define( 'FORCE_SSL_LOGIN', true );
+    define( 'DISALLOW_FILE_EDIT', false );
+    define( 'DISALLOW_FILE_MODS', false );
+    define( 'AUTOMATIC_UPDATER_DISABLED', false );
+    define( 'WP_AUTO_UPDATE_CORE', true );
     define( 'WP_ALLOW_REPAIR', true );
 }
 
