@@ -6,8 +6,9 @@ readme.html
 xmlrpc.php
 license.txt
 
-# Temporary files
+# Local files
 *.log
+local-*info.php
 
 # IDE files
 .idea
