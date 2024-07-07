@@ -1,0 +1,16 @@
+{
+  "name": "troy-web/public",
+  "description": "WordPress Technical Assessment Demo",
+  "type": "project",
+  "license": "GPL-3.0-or-later",
+  "authors": [
+    {
+      "name": "Rus Miller",
+      "email": "lancemonotone@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "vlucas/phpdotenv": "^5.6"
+  }
+}

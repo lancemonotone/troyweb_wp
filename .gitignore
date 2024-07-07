@@ -1,0 +1,21 @@
+# Environment variables
+.env
+
+# Unwanted files excluded for security reasons
+readme.html
+xmlrpc.php
+license.txt
+
+# IDE files
+.idea
+.vscode
+
+# Composer 
+vendor
+composer.phar
+
+# Node.js / npm
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
