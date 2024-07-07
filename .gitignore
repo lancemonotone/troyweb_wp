@@ -6,11 +6,14 @@ readme.html
 xmlrpc.php
 license.txt
 
+# Temporary files
+*.log
+
 # IDE files
 .idea
 .vscode
 
-# Composer 
+# Composer
 vendor
 composer.phar
 
