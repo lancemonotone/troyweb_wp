@@ -23,3 +23,8 @@ node_modules/
 npm-debug.log
 yarn-error.log
 package-lock.json
+
+# WordPress themes
+/wp-content/themes/twentytwentyfour/
+/wp-content/themes/twentytwentythree/
+/wp-content/themes/twentytwentytwo/
