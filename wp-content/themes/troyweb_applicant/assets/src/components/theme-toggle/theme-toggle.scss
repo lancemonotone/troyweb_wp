@@ -1,0 +1,62 @@
+.theme-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1rem;
+
+    > span {
+        white-space: nowrap;
+        font-size: 1.2rem;
+
+        @media screen and (max-width: 600px) {
+            width: 49px;
+            overflow: hidden;
+            font-size: 1rem;
+        }
+    }
+
+    .theme-toggle {
+        appearance: none;
+        background: var(--gray-mid);
+        border: 1px solid var(--white);
+        height: 2rem;
+        border-radius: 2rem;
+        width: 4rem;
+        position: relative;
+        cursor: pointer;
+        transition: background var(--transition);
+
+        &::before {
+            content: "";
+            display: block;
+            width: 1.6rem;
+            background: #2B2B2B;
+            border-radius: 50%;
+            position: absolute;
+            transition: all var(--transition);
+            top: 50%;
+            left: var(--button-left-position);
+            transform: translateY(-50%);
+            aspect-ratio: 1/1;
+        }
+
+        &:hover,
+        &[data-state=high-contrast] {
+            background: var(--text);
+
+            &::before {
+                background: var(--white);
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            width: 3rem;
+            height: 1.7rem;
+            border-radius: 1.7rem;
+
+            &::before {
+                width: 1.4rem;
+            }
+        }
+    }
+}

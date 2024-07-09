@@ -1,0 +1,10 @@
+// Look in vite.config for global app styles
+//@import "dashicons/dashicons.css"; // this adds a LOT of weight
+// Import all of Bootstrap's CSS
+@import "bootstrap/scss/bootstrap";
+@import 'scss/utility/normalize';
+@import 'scss/utility/a11y';
+@import 'scss/utility/theme';
+@import 'scss/utility/print';
+@import 'scss/utility/typography';
+@import 'scss/modules/nav';

@@ -1,0 +1,117 @@
+/*
+--COLOR KEY--
+--text: gray dark / almost black
+--background: gray light
+--white: white
+--primary-dark: blue dark
+--primary-medium: blue mid
+--primary-light: blue light
+--secondary-dark: purple dark
+--secondary-medium: green medium
+--accent: orange
+*/
+
+// The keys in the $body-states map are the classes that can be added to the body tag.
+// The values are the theme suffix (e.g., -alt) which will be used for each body class.
+// So to change themes, add the class to the body tag in the template file:
+/*
+add_filter( 'body_class', function ( $classes ) {
+    $classes[] = 'coloralt';
+    return $classes;
+} );
+*/
+$body-states: (
+        "high-contrast": "hc",
+        "coloralt": "alt",
+        "coloralt.high-contrast": "alt-hc",
+);
+
+$theme-colors: (
+        "text",
+        "background",
+        "background-dark",
+        "white",
+        "primary-dark",
+        "primary-medium",
+        "primary-light",
+        "accent",
+        "gray",
+        "gray-dark",
+        "gray-mid",
+        "hover-color"
+);
+
+:root {
+    /* default theme */
+    --text: #121212;
+    --background: #e5e5e5;
+    --background-dark: #b3b3b3;
+    --white: #ffffff;
+    --primary-dark: #224c66;
+    --primary-medium: #286aa6;
+    --primary-light: #00a3da;
+    --accent: #f15a2c;
+    --gray: #cacaca;
+    --gray-dark: #797979;
+    --gray-mid: #d9d9d9;
+    --hover-color: var(--primary-light);
+    --danger: #C04E4A;
+    --helpline-blue: #131444;
+
+    /* high contrast default theme */
+    --text-hc: #121212;
+    --background-hc: #e5e5e5;
+    --background-dark-hc: #b3b3b3;
+    --white-hc: #ffffff;
+    --primary-dark-hc: #121212;
+    --primary-medium-hc: #121212;
+    --primary-light-hc: #121212;
+    --accent-hc: #121212;
+    --gray-hc: #121212;
+    --gray-dark-hc: #ffffff;
+    --gray-mid-hc: #ffffff;
+    --hover-color-hc: var(--primary-light-hc);
+    --danger-hc: #121212;
+    --helpline-blue-hc: #121212;
+
+    /* alternate theme */
+    --text-alt: #121212;
+    --background-alt: #e5e5e5;
+    --background-dark-alt: #b3b3b3;
+    --white-alt: #ffffff;
+    --primary-dark-alt: #040941;
+    --primary-medium-alt: #40b991;
+    --primary-light-alt: #40b991;
+    --accent-alt: #527ac7;
+    --gray-alt: #cacaca;
+    --gray-dark-alt: #ffffff;
+    --gray-mid-alt: #ffffff;
+    --hover-color-alt: var(--primary-light-alt);
+    --danger-alt: #C04E4A;
+    --helpline-blue-alt: #131444;
+
+    /* high contrast alternate theme */
+    /* NEED TO UPDATE THESE VALUES WHEN DESIGN IS DONE */
+    --text-alt-hc: #121212;
+    --background-alt-hc: #e5e5e5;
+    --background-dark-alt-hc: #b3b3b3;
+    --white-alt-hc: #ffffff;
+    --primary-dark-alt-hc: #121212;
+    --primary-medium-alt-hc: #121212;
+    --primary-light-alt-hc: #121212;
+    --accent-alt-hc: #121212;
+    --gray-alt-hc: #121212;
+    --gray-dark-alt-hc: #ffffff;
+    --gray-mid-alt-hc: #ffffff;
+    --hover-color-alt-hc: var(--primary-light-alt-hc);
+    --danger-alt-hc: #121212;
+    --helpline-blue-alt-hc: #121212;
+}
+
+@each $state, $suffix in $body-states {
+    body.#{$state} {
+        @each $color in $theme-colors {
+            --#{$color}: var(--#{$color}-#{$suffix});
+        }
+    }
+}

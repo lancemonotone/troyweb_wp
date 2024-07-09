@@ -1,0 +1,30 @@
+@import "fonts";
+
+@mixin font-normalize {
+    position: relative;
+    text-rendering: optimizelegibility;
+    color: inherit;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 170%;
+    margin-block: 0;
+    margin-block-end: 2.2rem;
+}
+
+:root {
+    --font-sans: "Barlow", sans-serif;
+    --font-serif: "Roboto" serif;
+    --hover-color: var(--primary-light);
+}
+
+body {
+    @include font-normalize;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-block: 0;
+    margin-block-end: 1.6rem;
+}
