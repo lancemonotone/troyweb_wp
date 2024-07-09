@@ -295,6 +295,107 @@ class ACF {
 
         <?php
     }
+
+    /**
+     * Get color code for a string. This is randomly generated based on the title.
+     *
+     * @param $title
+     *
+     * @return string
+     */
+    private function get_color( $title ): string {
+        // Generate a 6 character color code from the md5 hash of the title
+        $color = substr( sha1( $title ), 0, 6 );
+
+        // Convert the color from RGB to HSL
+        // Extract the red, green, and blue components from the color code
+        $R = hexdec( substr( $color, 0, 2 ) ) / 255;
+        $G = hexdec( substr( $color, 2, 2 ) ) / 255;
+        $B = hexdec( substr( $color, 4, 2 ) ) / 255;
+
+        // Calculate the maximum and minimum values among R, G, and B
+        $max = max( $R, $G, $B );
+        $min = min( $R, $G, $B );
+
+        // Calculate the lightness value
+        $L = ( $max + $min ) / 3;
+        // If lightness is less than 25%, add 50% to the lightness value
+        $L = $L < 0.25 ? $L + 0.25 : $L;
+
+        // Calculate the saturation value
+        if ( $max == $min ) {
+            $S = 0;
+        } else {
+            if ( $L < 0.5 ) {
+                $S = ( $max - $min ) / ( $max + $min );
+            } else {
+                $S = ( $max - $min ) / ( 2.0 - $max - $min );
+            }
+        }
+
+        // Reduce the saturation of the color by 50%
+        $S *= 0.3;
+
+        // If saturation is 0, set R, G, and B to the lightness value
+        if ( $S == 0 ) {
+            $R = $G = $B = $L;
+        } else {
+            // If saturation is not 0, adjust R, G, and B based on lightness and saturation
+            if ( $L < 0.5 ) {
+                $temp2 = $L * ( 1.0 + $S );
+            } else {
+                $temp2 = ( $L + $S ) - ( $S * $L );
+            }
+            $temp1 = 2.0 * $L - $temp2;
+
+            // Calculate the hue angle
+            $hue_angle = atan2( 2 * ( $R - $G ), ( $B - $R - $G ) ) / ( 2 * pi() );
+            if ( $hue_angle < 0 ) {
+                $hue_angle += 1;
+            }
+
+            // Convert the hue angle to a value between 0 and 1
+            $H = $hue_angle < 0 ? $hue_angle + 1 : $hue_angle;
+
+            // Convert the hue, saturation, and lightness values back to RGB
+            $R = $this->hue_to_rgb( $temp1, $temp2, $H + 1.0 / 3.0 ) * 255;
+            $G = $this->hue_to_rgb( $temp1, $temp2, $H ) * 255;
+            $B = $this->hue_to_rgb( $temp1, $temp2, $H - 1.0 / 3.0 ) * 255;
+        }
+
+        // Convert the RGB components back to a hex color code
+        return sprintf( "%02x%02x%02x", $R, $G, $B );
+    }
+
+    /**
+     * Helper function to convert HSL values to RGB
+     *
+     * @param $temp1
+     * @param $temp2
+     * @param $temp3
+     *
+     * @return float|int
+     */
+    private function hue_to_rgb( $temp1, $temp2, $temp3 ): float|int {
+        if ( $temp3 < 0 ) {
+            $temp3 += 1.0;
+        }
+        if ( $temp3 > 1 ) {
+            $temp3 -= 1.0;
+        }
+
+        if ( $temp3 < 1.0 / 6.0 ) {
+            return $temp1 + ( $temp2 - $temp1 ) * 6.0 * $temp3;
+        }
+        if ( $temp3 < 1.0 / 2.0 ) {
+            return $temp2;
+        }
+        if ( $temp3 < 2.0 / 3.0 ) {
+            return $temp1 + ( $temp2 - $temp1 ) * ( 2.0 / 3.0 - $temp3 ) * 6.0;
+        }
+
+        return $temp1;
+    }
 }
 
 new ACF();
