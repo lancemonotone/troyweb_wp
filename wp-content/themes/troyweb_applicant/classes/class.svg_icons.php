@@ -13,6 +13,15 @@ namespace monotone;
 /**
  * This class is in charge of displaying SVG icons across the site.
  *
+ * How to use:
+ * To display an SVG icon in a template, you can use the following code snippet:
+ *
+ * echo SVG_Icons::get_svg($group ['ui'|'social'], $icon, $size = 24);
+ *
+ * Replace 'icon_name' with the key of the icon you want to display from the $icons array.
+ *
+ * To add a new icon to the array below:
+ *
  * Place each <svg> source on its own array key, without adding either
  * the `width` or `height` attributes, since these are added dynamically,
  * before rendering the SVG code.
@@ -38,7 +47,8 @@ class SVG_Icons {
 		'menu'        => '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 6H19.5V7.5H4.5V6ZM4.5 12H19.5V13.5H4.5V12ZM19.5 18H4.5V19.5H19.5V18Z" fill="currentColor"/></svg>',
 		'plus'        => '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M18 11.2h-5.2V6h-1.6v5.2H6v1.6h5.2V18h1.6v-5.2H18z" fill="currentColor"/></svg>',
 		'minus'       => '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M6 11h12v2H6z" fill="currentColor"/></svg>',
-	);
+	    'dropdown'    => '<svg viewBox="0 0 27 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.1956 15.4391L0.713339 1.98073C0.238477 1.46874 0.601587 0.636718 1.29989 0.636718L25.458 0.636719C26.1563 0.636719 26.5194 1.46874 26.0445 1.98073L13.5622 15.4391C13.4633 15.5457 13.2946 15.5457 13.1956 15.4391Z" fill="#333333"/></svg>',
+        );
 
 	/**
 	 * Social Icons – svg sources.
@@ -166,11 +176,11 @@ class SVG_Icons {
 	 * @param int    $size  The icon-size in pixels.
 	 * @return string
 	 */
-	public static function get_svg( $group, $icon, $size = 24 ) {
+	public static function get_svg($group, $icon, $size = 24) {
 
-		if ( 'ui' === $group ) {
+		if ('ui' === $group) {
 			$arr = self::$icons;
-		} elseif ( 'social' === $group ) {
+		} elseif ('social' === $group) {
 			$arr = self::$social_icons;
 		} else {
 			$arr = array();
@@ -186,13 +196,13 @@ class SVG_Icons {
 		 *
 		 * @param array $arr Array of icons.
 		 */
-		$arr = apply_filters( "twenty_twenty_one_svg_icons_{$group}", $arr );
+		$arr = apply_filters("twenty_twenty_one_svg_icons_{$group}", $arr);
 
 		$svg = '';
-		if ( array_key_exists( $icon, $arr ) ) {
-			$repl = sprintf( '<svg class="svg-icon" width="%d" height="%d" aria-hidden="true" role="img" focusable="false" ', $size, $size );
+		if (array_key_exists($icon, $arr)) {
+			$repl = sprintf('<svg class="svg-icon" width="%d" height="%d" aria-hidden="true" role="img" focusable="false" ', $size, $size);
 
-			$svg = preg_replace( '/^<svg /', $repl, trim( $arr[ $icon ] ) ); // Add extra attributes to SVG code.
+			$svg = preg_replace('/^<svg /', $repl, trim($arr[$icon])); // Add extra attributes to SVG code.
 		}
 
 		// @phpstan-ignore-next-line.
@@ -210,10 +220,10 @@ class SVG_Icons {
 	 * @param int    $size The icon-size in pixels.
 	 * @return string|null
 	 */
-	public static function get_social_link_svg( $uri, $size ) {
+	public static function get_social_link_svg($uri, $size) {
 		static $regex_map; // Only compute regex map once, for performance.
 
-		if ( ! isset( $regex_map ) ) {
+		if (!isset($regex_map)) {
 			$regex_map = array();
 
 			/**
@@ -226,7 +236,7 @@ class SVG_Icons {
 			 *
 			 * @param array $social_icons_map Array of default social icons.
 			 */
-			$map = apply_filters( 'twenty_twenty_one_social_icons_map', self::$social_icons_map );
+			$map = apply_filters('twenty_twenty_one_social_icons_map', self::$social_icons_map);
 
 			/**
 			 * Filters Twenty Twenty-One's array of social icons.
@@ -235,22 +245,21 @@ class SVG_Icons {
 			 *
 			 * @param array $social_icons Array of default social icons.
 			 */
-			$social_icons = apply_filters( 'twenty_twenty_one_svg_icons_social', self::$social_icons );
+			$social_icons = apply_filters('twenty_twenty_one_svg_icons_social', self::$social_icons);
 
-			foreach ( array_keys( $social_icons ) as $icon ) {
-				$domains            = array_key_exists( $icon, $map ) ? $map[ $icon ] : array( sprintf( '%s.com', $icon ) );
-				$domains            = array_map( 'trim', $domains ); // Remove leading/trailing spaces, to prevent regex from failing to match.
-				$domains            = array_map( 'preg_quote', $domains );
-				$regex_map[ $icon ] = sprintf( '/(%s)/i', implode( '|', $domains ) );
+			foreach (array_keys($social_icons) as $icon) {
+				$domains            = array_key_exists($icon, $map) ? $map[$icon] : array(sprintf('%s.com', $icon));
+				$domains            = array_map('trim', $domains); // Remove leading/trailing spaces, to prevent regex from failing to match.
+				$domains            = array_map('preg_quote', $domains);
+				$regex_map[$icon] = sprintf('/(%s)/i', implode('|', $domains));
 			}
 		}
-		foreach ( $regex_map as $icon => $regex ) {
-			if ( preg_match( $regex, $uri ) ) {
+		foreach ($regex_map as $icon => $regex) {
+			if (preg_match($regex, $uri)) {
 
-				return self::get_svg( 'social', $icon, $size ) . '<span class="screen-reader-text">';
+				return self::get_svg('social', $icon, $size) . '<span class="screen-reader-text">';
 			}
 		}
 		return null;
 	}
-
 }

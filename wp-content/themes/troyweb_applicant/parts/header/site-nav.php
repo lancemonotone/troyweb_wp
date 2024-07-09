@@ -21,6 +21,9 @@ namespace monotone; ?>
 </nav>
 
 <button id="primary-mobile-menu" class="d-sm-none" aria-controls="primary-menu-list" aria-expanded="false">
+    <span class="button-icon">
+        <?= SVG_Icons::get_svg('ui', 'menu') ?>
+    </span>
     <span class="button-text">
         <?php esc_html_e('Menu', 'monotone'); ?>
     </span>

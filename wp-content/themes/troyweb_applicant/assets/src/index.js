@@ -23,20 +23,14 @@ import './components/select-populated-form-fields/select-populated-form-fields.j
 // Smooth scroll
 import './components/smooth-scroll/smooth-scroll.js'
 
-// Transform UPPERCASE titles to Title Case
-import './components/title-case/title-case.js'
-
-// Theme color toggle
-import './components/theme-toggle/theme-toggle.js'
-
 // Primary navigation
-import './components/primary-navigation/primary-navigation.js'
+// import './components/primary-navigation/primary-navigation.js'
 
 // Expando
-import './components/expando/expando.js'
+// import './components/expando/expando.js'
 
 // Accordion
-import './components/accordion/accordion.js'
+// import './components/accordion/accordion.js'
 
 // Click to copy
 import './components/click-to-copy/click-to-copy.js'

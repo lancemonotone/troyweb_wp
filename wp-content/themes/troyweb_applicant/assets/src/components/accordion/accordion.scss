@@ -37,7 +37,7 @@
                 transform: rotate(0deg);
                 display: inline-block;
                 transition: all .2s ease-in-out;
-                background: url(../images/icon-drop.svg) no-repeat center;
+                background: url('data:image/svg+xml,%3Csvg viewBox="0 0 27 16" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath fill-rule="evenodd" clip-rule="evenodd" d="M13.1956 15.4391L0.713339 1.98073C0.238477 1.46874 0.601587 0.636718 1.29989 0.636718L25.458 0.636719C26.1563 0.636719 26.5194 1.46874 26.0445 1.98073L13.5622 15.4391C13.4633 15.5457 13.2946 15.5457 13.1956 15.4391Z" fill="%23333333"/%3E%3C/svg%3E') no-repeat center;
                 background-size: contain;
             }
 

@@ -27,7 +27,7 @@ define( 'WP_SITEURL', $_ENV['WP_SITEURL'] );
 if ( IS_DEBUG_MODE ) {
     define( 'WP_DEBUG', true );
     define( 'WP_DEBUG_LOG', true );
-    define( 'WP_DEBUG_DISPLAY', false );
+    define( 'WP_DEBUG_DISPLAY', true );
     define( 'SCRIPT_DEBUG', true );
     define( 'SAVEQUERIES', true );
     define( 'JETPACK_DEV_DEBUG', true );

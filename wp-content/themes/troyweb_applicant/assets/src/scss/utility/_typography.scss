@@ -4,7 +4,7 @@
     position: relative;
     text-rendering: optimizelegibility;
     color: inherit;
-    font-weight: 400;
+    font-weight: normal;
     font-size: 1.6rem;
     line-height: 170%;
     margin-block: 0;
@@ -13,17 +13,23 @@
 
 :root {
     --font-sans: "Barlow", sans-serif;
-    --font-serif: "Roboto" serif;
+    --font-serif: "Roboto", serif;
     --hover-color: var(--primary-light);
 }
 
 body {
     @include font-normalize;
+    font-family: var(--font-sans);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: var(--font-serif);
-    font-weight: 700;
+    font-weight: bold;
     line-height: 1.2;
     margin-block: 0;
     margin-block-end: 1.6rem;
