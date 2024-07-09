@@ -2,29 +2,23 @@
 
 namespace monotone; ?>
 
-<nav id="site-navigation" class="primary-navigation" aria-label="<?php esc_attr_e('Primary menu', 'monotone'); ?>">
-    <div class="search-part">
-        <?php get_template_part('parts/searchform'); ?>
+<nav class="navbar navbar-expand-md navbar-light" role="navigation" aria-label="<?php esc_attr_e('Primary menu', 'monotone'); ?>">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="<?php esc_attr_e('Toggle navigation', 'monotone'); ?>">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <?php
+        wp_nav_menu(array(
+            'theme_location'    => 'primary',
+            'depth'             => 2,
+            'container'         => 'div',
+            'container_class'   => 'collapse navbar-collapse',
+            'container_id'      => 'bs-example-navbar-collapse-1',
+            'menu_class'        => 'nav navbar-nav',
+            'fallback_cb'       => '\WP_Bootstrap_Navwalker::fallback',
+            'walker'            => new \WP_Bootstrap_Navwalker(),
+        ));
+        ?>
     </div>
-
-    <?php
-    wp_nav_menu(
-        [
-            'theme_location'  => 'primary',
-            'menu_class'      => 'offcanvas-body p-4 pt-0 p-lg-0',
-            'container_class' => 'navbar-nav flex-row flex-wrap bd-navbar-nav',
-            'items_wrap'      => '<ul id="primary-menu-list" class="%2$s">%3$s</ul>',
-            'fallback_cb'     => false,
-        ]
-    );
-    ?>
 </nav>
-
-<button id="primary-mobile-menu" class="d-sm-none" aria-controls="primary-menu-list" aria-expanded="false">
-    <span class="button-icon">
-        <?= SVG_Icons::get_svg('ui', 'menu') ?>
-    </span>
-    <span class="button-text">
-        <?php esc_html_e('Menu', 'monotone'); ?>
-    </span>
-</button>
