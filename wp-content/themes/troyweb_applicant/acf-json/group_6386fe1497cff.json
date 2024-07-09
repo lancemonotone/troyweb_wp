@@ -1,0 +1,104 @@
+{
+    "key": "group_6386fe1497cff",
+    "title": "Monotone Page Builder",
+    "fields": [
+        {
+            "key": "field_6386fe144d772",
+            "label": "Page Modules",
+            "name": "template_flex_page",
+            "aria-label": "",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "layouts": {
+                "layout_64badcc6dafd2": {
+                    "key": "layout_64badcc6dafd2",
+                    "name": "example",
+                    "label": "Example",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_64badcc6dafd3",
+                            "label": "Example Height",
+                            "name": "example_height",
+                            "aria-label": "",
+                            "type": "radio",
+                            "instructions": "The best way to space out modules on a page is to use this module or a spacer module.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "relevanssi_exclude": 0,
+                            "choices": {
+                                "standard": "Standard",
+                                "tall": "Tall"
+                            },
+                            "default_value": "standard",
+                            "return_format": "value",
+                            "allow_null": 0,
+                            "other_choice": 0,
+                            "layout": "vertical",
+                            "save_other_choice": 0
+                        },
+                        {
+                            "key": "field_64badcf4dafd4",
+                            "label": "Example Label",
+                            "name": "example_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "When populated, this optional field shows a single line of text aligned to the bottom right of the example line.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "min": "",
+            "max": "",
+            "button_label": "Add Layout"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-flex-page.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content"
+    ],
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1720549038
+}
