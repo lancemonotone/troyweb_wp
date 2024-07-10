@@ -86,7 +86,7 @@ class Branding {
 		}
 
 		echo <<< EOD
-		 <img class="image-fluid" src="{$image_url}" width="{$image_width}" height="{$image_height}" alt="{$alt}" />
+		 <img class="img-fluid" src="{$image_url}" width="{$image_width}" height="{$image_height}" alt="{$alt}" />
 		EOD;
 
 		if ($link) {
