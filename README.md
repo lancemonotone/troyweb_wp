@@ -1,5 +1,14 @@
 ## Troy Web WordPress Technical Assessment
 
+This repository contains the WordPress site for the Troy Web WordPress Technical Assessment. 
+The site is built using the **Monotone Flex Page Theme** as a starting point (renamed `troyweb_applicant`). 
+
+The theme includes a custom Flex Page Template that allows theme developers to create custom page layouts using 
+Advanced Custom Fields (ACF) Flexible Content fields. This feature requires ACF Pro, and you must 
+assign the "Flex Page Template" to a page in the WordPress admin. There is an example page at 
+`https://this-site.com/flex-page-example` that demonstrates the Flex Page Template in action. This feature isn't required for the assessment but is included for reference.
+
+See the theme's README.md file for more information on this theme's features.
 
 ### Setup Instructions:
 
@@ -21,7 +30,7 @@
 ## Why use a `.env` File?
 The `.env` file is used to keep sensitive configuration information separate from the codebase and repository. It also makes migrating the site to a new environment easy.
 
-### Create and Populate .env File:
+### Create and Populate `.env` File:
 1. Create a new `.env` file in the root directory of the project.
 2. Set the environment variables to the appropriate values for your site. 
 
