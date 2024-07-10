@@ -1,6 +1,4 @@
-<?php
-
-namespace monotone;
+<?php namespace monotone;
 
 /**
  * Disable Editor
@@ -11,49 +9,41 @@ namespace monotone;
  * @license      GPL-2.0+
  **/
 class DisableGutenberg {
-    private $excluded_templates = [];
-    private $excluded_ids = [];
-    private $excluded_post_types = [];
-
-    public function __construct() {
-        // This should move to theme options
-        if (class_exists('ACF')) {
-            $this->excluded_templates = ACF::$templates;
-        }
-
-        add_filter('use_block_editor_for_post_type', [$this, 'digwp_disable_gutenberg'], 10, 2);
-    }
-
     /**
-     * Disable Gutenberg for post types and templates.
-     * We're hijacking the use_block_editor_for_post_type 
+     * Disable Gutenberg for ids, post types and templates.
+     * We're hijacking the use_block_editor_for_post_type
      * filter to disable Gutenberg for the page template.
-     * 
+     *
      * @param bool $is_enabled
      * @param string $post_type
+     * @param array $excluded_templates
+     * @param array $excluded_post_types
+     * @param array $excluded_ids
+     *
      * @return bool
      */
-    function digwp_disable_gutenberg($is_enabled, $post_type) {
+    public static function disable_gutenberg( bool $is_enabled, string $post_type, array $excluded_templates = [], array $excluded_post_types = [], array $excluded_ids = [] ): bool {
         global $post;
 
-        if (empty($post)) {
+        if ( empty( $post ) ) {
             return $is_enabled;
         }
 
-        // Exclude post types
-        if (in_array($post_type, $this->excluded_post_types)) {
+        // Exclude templates
+        if ( in_array( get_page_template_slug( $post->ID ), $excluded_templates, true ) ) {
             return false;
         }
 
-        // Exclude templates
-        foreach ($this->excluded_templates as $template) {
-            if (get_page_template_slug($post->ID) === $template) {
-                return false;
-            }
+        // Exclude post types
+        if ( in_array( $post_type, $excluded_post_types ) ) {
+            return false;
+        }
+
+        // Exclude post IDs
+        if ( in_array( $post->ID, $excluded_ids ) ) {
+            return false;
         }
 
         return $is_enabled;
     }
 }
-
-new DisableGutenberg();

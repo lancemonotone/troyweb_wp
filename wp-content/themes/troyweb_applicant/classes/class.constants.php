@@ -3,7 +3,7 @@
 class Constants {
     var string $assets = '/assets';
     var string $build = '/assets/build';
-    var string $src = '/assets/src';
+    var string $layouts = '/layouts';
     var string $adminBuild = '/assets/build-admin';
     var string $classes = '/classes';
 
@@ -21,8 +21,8 @@ class Constants {
         define( 'THEME_ASSETS_URI', get_template_directory_uri() . $this->assets );
         define( 'THEME_BUILD_PATH', get_template_directory() . $this->build );
         define( 'THEME_BUILD_URI', get_template_directory_uri() . $this->build );
-        define( 'THEME_SRC_PATH', get_template_directory() . $this->src );
-        define( 'THEME_SRC_URI', get_template_directory_uri() . $this->src );
+        define( 'THEME_LAYOUT_PATH', get_template_directory() . $this->layouts );
+        define( 'THEME_LAYOUT_URI', get_template_directory_uri() . $this->layouts );
         define( 'THEME_ADMIN_BUILD_PATH', get_template_directory() . $this->adminBuild ); // Added constant for admin build path
         define( 'THEME_ADMIN_BUILD_URI', get_template_directory_uri() . $this->adminBuild ); // Added constant for admin build URI
         define( 'THEME_CLASSES_PATH', get_template_directory() . $this->classes );

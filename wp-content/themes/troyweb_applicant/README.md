@@ -1,10 +1,9 @@
 <div align="center">
-<h1>Monotone WordPress Theme</h1>
+<h1>Monotone Flex Page Theme</h1>
   <img src="logo.jpg" width="400" />
 </div>
 
-Monotone is a flexible, modular WordPress theme that leverages the power of Advanced Custom Fields (ACF) for layout configuration. It uses a modern Vite build system and provides a variety of
-theme color options, including a high-contrast mode for accessibility. All fonts are served directly from the theme directory, ensuring a consistent and fast user experience.
+Monotone is a flexible, modular WordPress theme that leverages the power of Advanced Custom Fields (ACF) for layout configuration. It uses a modern Vite asset build process for SCSS, Bootstrap and JavaScript, and all fonts are served directly from the theme, ensuring a consistent and fast user experience.
 
 ## Features
 
@@ -21,7 +20,7 @@ theme color options, including a high-contrast mode for accessibility. All fonts
 
 - **Custom Shortcodes**: Monotone includes custom shortcodes in the MCE editor for easy content creation.
 
-- **Bootstrap Menu Walker**: Monotone uses the WP Bootstrap Navwalker to create a Bootstrap menu.
+- **Bootstrap Menu Walker**: Monotone uses the WP Bootstrap Navwalker to create a Bootstrap-enabled menu.
 
 ## Classes
 
@@ -29,20 +28,22 @@ The theme's functionality is organized into classes, each residing in the `class
 
 
 - `ACF`: Handles the registration of ACF fields and blocks, as well as the import and export of field settings.
+- `ACF Flex Page`: Handles the layout configuration and the rendering of Flexible Content Layout modules.
 - `Admin Template Filter`: Filter pages by template in the admin page list.
 - `Assets`: Handles the enqueueing of scripts and styles, and the dequeueing of WP Block Library CSS.
 - `Autoactivate`: Automatically activates the theme's default plugins.
 - `Blog`: Handles the blog functionality and rewrite rules.
 - `Branding`: Adds custom branding options to the Customizer.
 - `Constants`: Defines the theme's constants.
+- `Disable Gutenberg`: Disables the Gutenberg editor for specific post types and page templates.
 - `Images`: Handles the image sizes, conversion to WEBP, and responsive image markup.
-- `Layout`: Handles the layout configuration and the rendering of Flexible Content Layout blocks.
 - `Navigation`: Handles the navigation menus.
 - `Replace LSEP`: Replaces the line separator character with a space.
 - `Shortcodes`: Adds custom shortcodes to the MCE editor.
 - `SVG Icons`: Adds a library of SVG icons to the theme.
 - `Theme:`: Handles the theme's setup and configuration.
 - `Widgets`: Registers the theme's widgets and sidebars.
+- `WP Bootstrap Navwalker`: Registers the WP Bootstrap Navwalker for Bootstrap-enabled menus.
 
 ## Build Setup
 

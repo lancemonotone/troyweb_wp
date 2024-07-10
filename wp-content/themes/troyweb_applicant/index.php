@@ -1,6 +1,4 @@
-<?php
-
-namespace monotone; ?>
+<?php namespace monotone; ?>
 
 <?php get_header(); ?>
 

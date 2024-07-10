@@ -11,5 +11,5 @@ import './index.scss'
 /** Components */
 import './components/components.js'
 
-/**  Layouts */
-import './layouts/layouts.js'
+/**  Flex Page Layouts (see README in layouts directory) */
+import '../../layouts/layouts.js'

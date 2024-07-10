@@ -1,10 +1,10 @@
 {
     "key": "group_6386fe1497cff",
-    "title": "Monotone Page Builder",
+    "title": "Flex Layouts",
     "fields": [
         {
             "key": "field_6386fe144d772",
-            "label": "Page Modules",
+            "label": "Flex Modules",
             "name": "template_flex_page",
             "aria-label": "",
             "type": "flexible_content",
@@ -17,62 +17,6 @@
                 "id": ""
             },
             "layouts": {
-                "layout_64badcc6dafd2": {
-                    "key": "layout_64badcc6dafd2",
-                    "name": "example",
-                    "label": "Example",
-                    "display": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_64badcc6dafd3",
-                            "label": "Example Height",
-                            "name": "example_height",
-                            "aria-label": "",
-                            "type": "radio",
-                            "instructions": "The best way to space out modules on a page is to use this module or a spacer module.",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "relevanssi_exclude": 0,
-                            "choices": {
-                                "standard": "Standard",
-                                "tall": "Tall"
-                            },
-                            "default_value": "standard",
-                            "return_format": "value",
-                            "allow_null": 0,
-                            "other_choice": 0,
-                            "layout": "vertical",
-                            "save_other_choice": 0
-                        },
-                        {
-                            "key": "field_64badcf4dafd4",
-                            "label": "Example Label",
-                            "name": "example_label",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "When populated, this optional field shows a single line of text aligned to the bottom right of the example line.",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        }
-                    ],
-                    "min": "",
-                    "max": ""
-                },
                 "layout_668da23afd65d": {
                     "key": "layout_668da23afd65d",
                     "name": "full_width_section",
@@ -149,6 +93,60 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_64badcc6dafd2": {
+                    "key": "layout_64badcc6dafd2",
+                    "name": "divider",
+                    "label": "Divider",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_64badcc6dafd3",
+                            "label": "Divider Height",
+                            "name": "divider_height",
+                            "aria-label": "",
+                            "type": "button_group",
+                            "instructions": "The best way to space out modules on a page is to use this module or a spacer module.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "mb-short": "Short",
+                                "mb-standard": "Standard",
+                                "mb-tall": "Tall"
+                            },
+                            "default_value": "mb-standard",
+                            "return_format": "value",
+                            "allow_null": 0,
+                            "layout": "horizontal"
+                        },
+                        {
+                            "key": "field_64badcf4dafd4",
+                            "label": "Divider Label",
+                            "name": "divider_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "When populated, this optional field shows a single line of text aligned to the bottom right of the example line.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -176,5 +174,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1720558660
+    "modified": 1720638685
 }
