@@ -1,10 +1,12 @@
-<?php namespace monotone;
+<?php
+
+namespace monotone;
 
 class ACF {
     protected string $theme_scss = '/assets/src/scss/utility/_theme.scss';
 
-    private static array $templates = [
-        'template_flex_page'
+    public static array $templates = [
+        'template-flex-page.php'
     ];
 
     public function __construct() {
@@ -12,10 +14,6 @@ class ACF {
         add_action( 'admin_head', [ $this, 'collapse_layout_fields' ] );
         add_action( 'admin_head', [ $this, 'add_thumbnail_to_layout_choices' ] );
         add_filter( 'acf/fields/flexible_content/layout_title', [ $this, 'add_layout_title' ], 10, 4 );
-
-        // This will eventually be an ACF field to enter template => theme pairs
-        // add_action( 'wp_enqueue_scripts', [ $this, 'add_template_theme_map' ], 5 );
-        // add_action( 'admin_enqueue_scripts ', [ $this, 'add_template_theme_map' ], 5 );
     }
 
     public function add_options_page() {
@@ -111,6 +109,7 @@ class ACF {
         return $title_html;
     }
 
+
     /**
      * Collapse all flexible content fields
      *
@@ -127,7 +126,6 @@ class ACF {
         </style>
 
         <script type="text/javascript">
-
             document.addEventListener('DOMContentLoaded', function () {
                 const classes = 'acf-button button button-primary'
                 const button = '<a class="' + classes + '" data-collapse="all">Collapse All</a>'
@@ -159,7 +157,6 @@ class ACF {
                     })
                 }
             })
-
         </script>
         <?php
     }
@@ -178,21 +175,23 @@ class ACF {
         // Define a placeholder for the thumbnail span
         $thumbnail_html = '<span class="thumbnail no-thumbnail"></span>';
 
-        if ( file_exists( THEME_PATH . "/assets/src/layouts/{$field_name}/{$field_name}.jpg" ) ) {
-            // Get the theme directory uri
-            $theme_uri = get_template_directory_uri();
+        // Check if the image exists in the specified directory as a .jpg or .png file
+        $if_jpg = file_exists( THEME_PATH . "/assets/src/layouts/{$field_name}/{$field_name}.jpg" );
+        $if_png = file_exists( THEME_PATH . "/assets/src/layouts/{$field_name}/{$field_name}.png" );
 
-            // Construct the path to the image
-            $image_path = "{$theme_uri}/assets/src/layouts/{$field_name}/{$field_name}.jpg";
-
-            // Update the thumbnail HTML to include the image
-            $thumbnail_html = '<span class="thumbnail"><img src="' . esc_url( $image_path ) . '" height="36px" /></span>';
+        // If the image doesn't exist in either format, return the placeholder thumbnail
+        if ( ! $if_jpg && ! $if_png ) {
+            return $thumbnail_html;
         }
 
-        // Return the thumbnail HTML, which will be an empty span if the image doesn't exist
-        return $thumbnail_html;
-    }
+        if ( $if_jpg ) {
+            $image_path = THEME_SRC_URI . "/layouts/{$field_name}/{$field_name}.jpg";
+        } elseif ( $if_png ) {
+            $image_path = THEME_SRC_URI . "/layouts/{$field_name}/{$field_name}.png";
+        }
 
+        return '<span class="thumbnail"><img src="' . esc_url( $image_path ) . '" height="36px" alt="" /></span>';
+    }
 
     /**
      * Enhances the layout selection tooltips in the WordPress admin by adding thumbnail previews.
@@ -204,7 +203,7 @@ class ACF {
      * before they are displayed. The path to the thumbnails is constructed using the layout name and is based
      * on a conventional directory structure within the theme.
      */
-    public function add_thumbnail_to_layout_choices() {
+    public function add_thumbnail_to_layout_choices(): void {
         $theme_uri = get_template_directory_uri();
         ?>
         <style>
@@ -215,10 +214,12 @@ class ACF {
             .acf-tooltip.acf-fc-popup li a img {
                 position: absolute;
                 top: 0;
-                left: calc(-320px - 1rem);
+                right: 100%;
+                transform: translateX(-1rem);
                 opacity: 0;
                 transition: opacity 0.2s ease-in-out;
-                width: 320px;
+                width: auto;
+                max-width: 320px;
                 padding: 0.5rem;
                 background: #d5d5d5;
                 box-shadow: 0 0 2px #00000088;
@@ -232,65 +233,54 @@ class ACF {
 
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-                const checkImageExistence = true  // Change this flag to control image existence checking
-                const templates = document.querySelectorAll('.tmpl-popup')
+                const templates = document.querySelectorAll('.tmpl-popup');
 
                 templates.forEach(function (template) {
-                    const templateContent = template.textContent.trim()
-                    const container = document.createElement('div')
-                    container.innerHTML = templateContent
+                    const templateContent = template.innerHTML.trim(); // Use innerHTML here
+                    const container = document.createElement('div');
+                    container.innerHTML = templateContent;
 
-                    const links = container.querySelectorAll('a[data-layout]')
+                    const links = container.querySelectorAll('a[data-layout]');
 
                     // Create an array of promises to track image loading
-                    const imagePromises = []
+                    const imagePromises = [];
 
                     links.forEach(function (link) {
-                        const layout = link.getAttribute('data-layout')
-                        const imgSrc = '<?php echo $theme_uri; ?>/assets/src/layouts/' + layout + '/' + layout + '.jpg'
+                        const layout = link.getAttribute('data-layout');
+                        const imgSrcJpg = `<?=THEME_SRC_URI?>/layouts/${layout}/${layout}.jpg`;
+                        const imgSrcPng = `<?=THEME_SRC_URI?>/layouts/${layout}/${layout}.png`;
 
                         // Create a new Promise for each image
                         const imagePromise = new Promise(function (resolve) {
-                            const image = new Image()
-                            if (checkImageExistence) {
+                            const loadImage = (src) => {
+                                const image = new Image();
                                 image.onload = function () {
-                                    const img = document.createElement('img')
-                                    img.src = imgSrc
-                                    img.classList.add('image-hidden')
-
-                                    link.prepend(img)
-
-                                    // Resolve the Promise once the image has loaded
-                                    resolve()
-                                }
+                                    const img = document.createElement('img');
+                                    img.src = src;
+                                    img.classList.add('image-hidden');
+                                    link.prepend(img);
+                                    resolve();
+                                };
                                 image.onerror = function () {
-                                    // Image doesn't exist, handle accordingly (e.g., show a default image)
-                                    resolve()
-                                }
-                            } else {
-                                const img = document.createElement('img')
-                                img.src = imgSrc
-                                img.classList.add('image-hidden')
+                                    resolve();
+                                };
+                                image.src = src;
+                            };
 
-                                link.prepend(img)
-
-                                // Immediately resolve the Promise if we're not checking for image existence
-                                resolve()
-                            }
-                            image.src = imgSrc
-                        })
+                            // Try to load both images using Promise.race
+                            Promise.race([loadImage(imgSrcJpg), loadImage(imgSrcPng)]);
+                        });
 
                         // Add the Promise to the array
-                        imagePromises.push(imagePromise)
-                    })
+                        imagePromises.push(imagePromise);
+                    });
 
                     // Wait for all image Promises to resolve before converting HTML back to a string
                     Promise.all(imagePromises).then(function () {
-                        template.textContent = container.innerHTML.trim()
-                    })
-                })
-            })
-
+                        template.innerHTML = container.innerHTML.trim(); // Use innerHTML here
+                    });
+                });
+            });
         </script>
 
         <?php
