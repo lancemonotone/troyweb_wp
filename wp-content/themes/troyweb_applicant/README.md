@@ -13,8 +13,6 @@ theme color options, including a high-contrast mode for accessibility. All fonts
 
 - **Vite Build System**: Monotone uses Vite as its build system, providing fast and efficient compilation of assets. It supports both editor and admin style options, compiled from SCSS.
 
-- **Theme Color Options**: Monotone offers several theme color options, including a high-contrast mode for better accessibility.
-
 - **Fonts Served from Theme Directory**: To ensure a consistent user experience and faster load times, all fonts are served directly from the theme directory.
 
 - **Custom Branding Options**: Monotone provides custom branding options in the Customizer, allowing you to easily customize the site's logo, colors, and more.
@@ -23,19 +21,20 @@ theme color options, including a high-contrast mode for accessibility. All fonts
 
 - **Custom Shortcodes**: Monotone includes custom shortcodes in the MCE editor for easy content creation.
 
+- **Bootstrap Menu Walker**: Monotone uses the WP Bootstrap Navwalker to create a Bootstrap menu.
+
 ## Classes
 
 The theme's functionality is organized into classes, each residing in the `classes` directory. Here are the main classes:
 
-- `ACF Editor Palette`: Adds custom colors to the theme options to control the palette of the Flexible Content Fields.
+
 - `ACF`: Handles the registration of ACF fields and blocks, as well as the import and export of field settings.
-- `Assets`: Handles the enqueueing of scripts and styles, and the dequeueing of WP Block Library CSS.
 - `Admin Template Filter`: Filter pages by template in the admin page list.
+- `Assets`: Handles the enqueueing of scripts and styles, and the dequeueing of WP Block Library CSS.
 - `Autoactivate`: Automatically activates the theme's default plugins.
 - `Blog`: Handles the blog functionality and rewrite rules.
 - `Branding`: Adds custom branding options to the Customizer.
 - `Constants`: Defines the theme's constants.
-- `Gravity Forms`: Adds custom styles to Gravity Forms.
 - `Images`: Handles the image sizes, conversion to WEBP, and responsive image markup.
 - `Layout`: Handles the layout configuration and the rendering of Flexible Content Layout blocks.
 - `Navigation`: Handles the navigation menus.
@@ -43,7 +42,6 @@ The theme's functionality is organized into classes, each residing in the `class
 - `Shortcodes`: Adds custom shortcodes to the MCE editor.
 - `SVG Icons`: Adds a library of SVG icons to the theme.
 - `Theme:`: Handles the theme's setup and configuration.
-- `TinyMCE`: Adds custom styles to the TinyMCE editor.
 - `Widgets`: Registers the theme's widgets and sidebars.
 
 ## Build Setup
@@ -54,10 +52,23 @@ The theme uses npm for package management. To get started, navigate to the `asse
 npm install
 ```
 
-To build the project, use the following command:
+To build the project and watch for changes, use the following command:
 
 ```bash
 npm run build
+```
+
+In addition to the main build, there are two additional builds for the editor and admin styles. These are built with SCSS and are located in the `assets/scss` directory.
+
+```bash
+npm run editor
+npm run admin
+```
+
+You can build all the assets at once by running the following command:
+
+```bash
+npm run build-all
 ```
 
 ## Contributing
