@@ -1,0 +1,17 @@
+.full-width-section {
+    --card-columns: 1fr;
+
+    &[class$="-background-color"] .card *:not(a) {
+        color: inherit !important;
+    }
+
+    .card-content {
+        margin-block-end: var(--spacer-normal);
+    }
+
+    .content-w-image-card {
+        .card-content {
+            margin-block-end: 0;
+        }
+    }
+}
