@@ -2,7 +2,6 @@
 
 @mixin font-normalize {
     text-rendering: optimizelegibility;
-    color: inherit;
     font-weight: normal;
     line-height: 170%;
     word-wrap: break-word;
@@ -112,7 +111,6 @@ dl {
 
 a {
     text-decoration: none;
-    color: var(--bs-primary);
 }
 
 address {

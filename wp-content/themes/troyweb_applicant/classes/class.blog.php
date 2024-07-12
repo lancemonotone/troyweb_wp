@@ -26,10 +26,10 @@ class Blog {
             $aria_label = esc_attr( $alt_text );
             if ( empty( $icon_html ) ) {
                 // Default text link
-                return '<a href="' . esc_url( $link ) . '" class="edit-post-link btn btn-sm btn-outline-secondary" aria-label="' . $aria_label . '">Edit Post</a>';
+                return '<a href="' . esc_url( $link ) . '" class="edit-post-link btn btn-sm btn-outline-primary" aria-label="' . $aria_label . '">Edit Post</a>';
             } else {
                 // Icon link with accessible label
-                return '<a href="' . esc_url( $link ) . '" class="edit-post-link btn btn-sm btn-outline-secondary" aria-label="' . $aria_label . '">' . $icon_html . '</a>';
+                return '<a href="' . esc_url( $link ) . '" class="edit-post-link btn btn-sm btn-outline-primary" aria-label="' . $aria_label . '">' . $icon_html . '</a>';
             }
         }
 

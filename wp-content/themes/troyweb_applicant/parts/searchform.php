@@ -21,7 +21,7 @@ $_aria_label = ! empty( $args[ 'aria_label' ] ) ? 'aria-label="' . esc_attr( $ar
            id="<?= esc_attr( $_unique_id ); ?>"
            value="<?= get_search_query(); ?>">
 
-    <button class="btn btn-secondary text-nowrap" type="submit">
+    <button class="btn btn-primary text-nowrap" type="submit">
         <?=
         /* translators: Search button text. */
         esc_html__( 'Search', 'monotone' ); ?>

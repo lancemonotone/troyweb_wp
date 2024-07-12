@@ -28,7 +28,7 @@ get_header(); ?>
         ?></p>
 
     <div class="bg-body-tertiary">
-        <div class="container d-flex justify-content-end">
+        <div class="container d-flex justify-content-end mb-5">
             <?php get_template_part( 'parts/searchform' ); ?>
         </div>
     </div>

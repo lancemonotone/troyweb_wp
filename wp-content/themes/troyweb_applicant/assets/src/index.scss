@@ -14,8 +14,12 @@
 @import 'scss/utility/site';
 
 // Import Bootstrap CSS variable overrides
+@import 'scss/modules/bs_override';
+
+// Import modules
 @import 'scss/modules/wp-admin-bar';
 @import 'scss/modules/buttons';
+@import 'scss/modules/forms';
 @import 'scss/modules/header';
 @import 'scss/modules/footer';
 @import 'scss/modules/header-search-form';
