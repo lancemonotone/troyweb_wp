@@ -8,6 +8,7 @@ class ACF_Flex_Page {
 
     public function __construct() {
         add_action( 'admin_head', [ $this, 'collapse_layout_fields' ] );
+        add_action( 'admin_head', [ $this, 'add_background_color_to_layouts_handles' ] );
         add_action( 'admin_head', [ $this, 'add_thumbnail_to_layout_choices' ] );
         add_filter( 'acf/fields/flexible_content/layout_title', [ $this, 'add_layout_title' ], 10, 4 );
 
@@ -256,6 +257,26 @@ class ACF_Flex_Page {
 
         // If no values are found for any of the fields, return the $title_html string.
         return $title_html;
+    }
+
+    public function add_background_color_to_layouts_handles(): void {
+        ?>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function () {
+                const handles = document.querySelectorAll('.acf-fc-layout-handle')
+                // look for the style tag on the .acf-layout-type child and apply it to the parent
+                handles.forEach(function (handle) {
+                    const layoutType = handle.querySelector('.acf-layout-type')
+                    if (layoutType) {
+                        const style = layoutType.getAttribute('style')
+                        if (style) {
+                            handle.setAttribute('style', style)
+                        }
+                    }
+                })
+            })
+        </script>
+        <?php
     }
 
 
