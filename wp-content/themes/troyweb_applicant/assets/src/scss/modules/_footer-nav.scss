@@ -1,40 +1,44 @@
-footer#colophon .widget_nav_menu {
+.site > footer {
+    .widget_nav_menu {
+        .widget-title {
+            @extend .visually-hidden;
+        }
+    }
+
+    .menu-social-media-container .menu {
+        @extend .d-flex;
+        @extend .gap-3;
+    }
+
     .menu {
-        @extend .list-unstyled; // Removes list style
-        @extend .text-center; // Center aligns the text
-        padding: 0;
+        @extend .list-unstyled;
+        @extend .text-start;
+        @extend .p-0;
     }
 
     .menu .menu-item {
-        @extend .d-block; // Stack menu items vertically
-        margin-bottom: .5rem; // Add some space between items
+        @extend .d-block;
+        @extend .mb-0;
     }
 
     .menu .menu-item a {
-        @extend .text-decoration-none; // No underline on links
-        padding: .5rem 1rem; // Padding for clickable area (adjust values as needed)
-        color: inherit; // Use the text color from the parent for a clean look
+        @extend .text-decoration-none;
+        @extend .d-block;
+        @extend .py-2;
+        @extend .px-0;
+        color: var(--bs-secondary-bg);
+
+        &:hover {
+            color: var(--bs-body-bg);
+        }
     }
 
-    /* Sub-menu Styles */
     .menu .sub-menu {
-        //display: none; // Hide sub-menu by default
-        //position: absolute; // Positioning relative to parent item
-        margin-top: .5rem; // Small gap between main menu and sub-menu
-        border-radius: .25rem; // Rounded corners for sub-menu
-        padding: .5rem 0; // Padding inside sub-menu
-    }
-
-    .menu .menu-item-has-children:hover .sub-menu {
-        display: block; // Show sub-menu on hover
+        @extend .ms-3;
+        @extend .p-0;
     }
 
     .menu .sub-menu .menu-item {
-        @extend .d-block; // Stack sub-menu items vertically
-    }
-
-    .menu .sub-menu .menu-item a {
-        @extend .d-block; // Ensure the link fills the block for easier clicking
-        padding: .25rem 1rem; // Adjust padding for sub-menu items
+        @extend .d-block;
     }
 }
