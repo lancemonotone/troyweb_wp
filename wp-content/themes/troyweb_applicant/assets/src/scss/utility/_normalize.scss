@@ -238,8 +238,16 @@ img {
     border-style: none;
 }
 
+/**
+ * Scale images to fit in containers.
+ */
+img[class*=wp-image-]{
+    height: auto;
+    max-width: 100%;
+}
+
 // https://wordpress.stackexchange.com/questions/107358/make-wordpress-image-captions-responsive#answer-107361
-@media (max-width: 768px) {
+//@media (max-width: 768px) {
     .wp-caption {
         /* Force the box to be 100% */
         width: 100% !important;
@@ -249,7 +257,7 @@ img {
         max-width: 99.03225806%; /* 614/620 */
         height: auto;
     }
-}
+//}
 
 /**
  * Hide the overflow in IE.
@@ -267,13 +275,15 @@ svg:not(:root) {
  * 2. Remove the margin in Firefox and Safari.
  */
 
+a.btn,
 button,
 input,
 optgroup,
 select,
 textarea {
-    font-family: sans-serif; /* 1 */
-    font-size: 100%; /* 1 */
+    font-family: var(--font-serif); /* 1 */
+    font-weight: lighter; /* 1 */
+    font-size: 80%; /* 1 */
     line-height: 1.15; /* 1 */
     margin: 0; /* 2 */
 }

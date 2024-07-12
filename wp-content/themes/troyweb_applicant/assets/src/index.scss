@@ -11,9 +11,13 @@
 @import 'scss/utility/typography';
 @import 'scss/utility/theme';
 @import 'scss/utility/print';
-@import 'scss/utility/typography';
 @import 'scss/utility/site';
 
 // Import Bootstrap CSS variable overrides
+@import 'scss/modules/wp-admin-bar';
+@import 'scss/modules/buttons';
+@import 'scss/modules/header-nav';
+@import 'scss/modules/footer-nav';
+@import 'scss/modules/header-search-form';
 @import 'scss/modules/blog';
 
