@@ -1,11 +1,10 @@
-<?php
+<?php namespace monotone; ?>
 
-namespace monotone; ?>
-
-<header id="masthead" class="border-bottom mb-4">
-    <div class="bg-body-tertiary py-3">
+<header id="masthead" class="border-bottom mb-standard">
+    <div class="header-search-form bg-secondary d-none d-lg-block">
         <div class="container d-flex justify-content-end">
-            <?php get_template_part( 'parts/searchform' ); ?>
+            <?php
+            get_template_part( 'parts/searchform'); ?>
         </div>
     </div>
 
