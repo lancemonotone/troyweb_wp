@@ -1,4 +1,5 @@
-<?php
+<?php namespace monotone;
+
 /**
  * The template for displaying 404 pages (not found)
  *
@@ -9,21 +10,20 @@
  * @since Twenty Twenty-One 1.0
  */
 
-get_header();
-?>
-    <div class="layout">
-        <div class="inner">
-            <header class="page-header alignwide">
-                <h2 class="header-lg"><?php esc_html_e( 'Nothing here', 'monotone' ); ?></h2>
-            </header><!-- .page-header -->
+get_header(); ?>
 
-            <div class="error-404 not-found default-max-width">
-                <div class="page-content">
-                    <p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try a search?', 'monotone' ); ?></p>
-					<?php get_search_form(); ?>
-                </div><!-- .page-content -->
-            </div><!-- .error-404 -->
+    <h1 class=""><?php
+        /* translators: Nothing found text. */
+        esc_html_e( 'Nothing here', 'monotone' ); ?></h1>
+
+    <p><?php
+        /* translators: Nothing found text. */
+        esc_html_e( 'It looks like nothing was found at this location. Maybe try a search?', 'monotone' ); ?></p>
+
+    <div class="bg-body-tertiary">
+        <div class="container d-flex justify-content-end">
+            <?php get_template_part( 'parts/searchform' ); ?>
         </div>
     </div>
-<?php
-get_footer();
+
+    <?php get_footer();
