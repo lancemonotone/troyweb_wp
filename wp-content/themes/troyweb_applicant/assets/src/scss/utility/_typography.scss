@@ -27,7 +27,7 @@ body {
 * Add a top margin to all elements in the container
 * except the first one.
 */
-main .container :is(div, h1, h2, h3, h4, h5, h6, p, section, article, header, footer, nav, main) + :is(div, h1, h2, h3, h4, h5, h6, p, section, article, header, footer, nav, main) {
+main .container :is(div, pre, h1, h2, h3, h4, h5, h6, p, section, article, header, footer, nav, main) + :is(div, pre, h1, h2, h3, h4, h5, h6, p, section, article, header, footer, nav, main) {
     margin-block-start: 1.5rem;
 }
 
