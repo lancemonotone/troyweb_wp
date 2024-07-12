@@ -1,14 +1,19 @@
-// Look in vite.config for global app styles
+// Import custom Bootstrap SCSS overrides
+@import 'scss/bs-custom/spacers';
+@import 'scss/bs-custom/utilities';
 
-// Import custom Bootstrap overrides
-@import 'scss/modules/spacers';
-
-// Import all of Bootstrap's CSS
+// Import Bootstrap
 @import "bootstrap/scss/bootstrap";
 
 // Import site styles
+@import 'scss/utility/functions';
 @import 'scss/utility/normalize';
+@import 'scss/utility/typography';
 @import 'scss/utility/theme';
 @import 'scss/utility/print';
 @import 'scss/utility/typography';
+@import 'scss/utility/site';
+
+// Import Bootstrap CSS variable overrides
+@import 'scss/modules/blog';
 
