@@ -1,6 +1,6 @@
 <?php namespace monotone; ?>
 
-<nav class="navbar navbar-expand-lg" role="navigation" aria-label="<?php
+<nav class="navbar navbar-expand-lg pt-lg-4" role="navigation" aria-label="<?php
 /* translators: Primary Menu text. */
 esc_attr_e( 'Primary menu', 'monotone' );
 ?>">

@@ -1,0 +1,20 @@
+.navbar {
+    --bs-navbar-toggler-focus-width: 0.05rem;
+    line-height: 1.4;
+}
+
+.dropdown-menu {
+    --bs-dropdown-border-radius: 0;
+    --bs-dropdown-item-padding-y: .5rem;
+    border: none;
+
+    @media screen and (min-width: map-get($grid-breakpoints, lg)) {
+        &.show {
+            border-block-end: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+        }
+
+        &[data-bs-popper] {
+            margin-top: 1rem;
+        }
+    }
+}
