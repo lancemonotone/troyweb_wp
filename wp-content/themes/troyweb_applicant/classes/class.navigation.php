@@ -14,7 +14,6 @@ class Navigation {
             'footer'  => __('Footer Menu', 'monotone'),
         ]);
     }
-
     /**
      * Use namespaced data attribute for Bootstrap's dropdown toggles.
      * @see https://github.com/wp-bootstrap/wp-bootstrap-navwalker
