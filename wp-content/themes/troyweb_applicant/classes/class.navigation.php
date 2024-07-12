@@ -16,8 +16,7 @@ class Navigation {
      */
     public function register_menus() {
         register_nav_menus([
-            'primary' => __('Primary Menu', 'monotone'),
-            'footer'  => __('Footer Menu', 'monotone'),
+            'primary' => __('Primary Menu', 'monotone')
         ]);
     }
 
