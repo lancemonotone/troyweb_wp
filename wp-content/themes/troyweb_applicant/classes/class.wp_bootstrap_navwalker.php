@@ -297,16 +297,6 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
                 $item_output .= '<a' . $attributes . '>';
             }
 
-			/*
-			 * Initiate empty icon var, then if we have a string containing any
-			 * icon classes form the icon markup with an <i> element. This is
-			 * output inside of the item before the $title (the link text).
-			 */
-			$icon_html = '';
-			if (!empty($icon_class_string)) {
-				// Append an <i> with the icon classes to what is output before links.
-				$icon_html = '<i class="' . esc_attr($icon_class_string) . '" aria-hidden="true"></i> ';
-			}
             /*
              * Initiate empty icon var, then if we have a string containing any
              * icon classes form the icon markup with an <i> element. This is
