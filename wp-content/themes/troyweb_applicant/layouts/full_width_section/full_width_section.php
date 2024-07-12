@@ -18,7 +18,7 @@ $styles  = $args[ 'styles' ] ?? '';
         <?php } ?>
 
         <?php if ( $content ) { ?>
-            <div class=""><?= $content ?></div>
+            <?= $content ?>
         <?php } ?>
 
     </div>
