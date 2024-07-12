@@ -1,6 +1,4 @@
-<?php
-
-namespace monotone;
+<?php namespace monotone;
 /*
 * Template Name: Flex Page Template
 *
