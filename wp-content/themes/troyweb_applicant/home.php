@@ -15,7 +15,7 @@ get_header();
 <?php } else { ?>
 
     <p><?php
-        /* translators: Nothing found text. */
+        /* translators: No posts found text. */
         esc_html_e( 'No posts found.', 'monotone' ); ?></p>
 
 <?php } ?>
