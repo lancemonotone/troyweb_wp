@@ -23,7 +23,7 @@
 
             <span class="featured-image bg-body-secondary"><?= Blog::get_featured_image() ?></span>
 
-            <p class="overflow-auto"><?= Blog::get_excerpt( get_the_ID(), 30 ) ?: ' ' ?></p>
+            <p class="overflow-auto"><?= Blog::get_excerpt( get_the_ID(), 60 ) ?: ' ' ?></p>
 
             <footer class="small d-grid gap-1 mt-0 pt-3">
                 <?php if ( $categories = Blog::get_term_links() ) { ?>
