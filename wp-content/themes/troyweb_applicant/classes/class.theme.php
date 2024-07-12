@@ -10,6 +10,7 @@ class Theme {
 
     public function add_theme_support() {
         add_theme_support( 'title-tag' );
+        add_theme_support( 'post-thumbnails' );
 
         // Disable comments
         add_filter( 'comments_open', '__return_false', 20, 2 );
@@ -52,6 +53,10 @@ class Theme {
     }
 
     public function add_body_classes( $classes ) {
+        // Add the page template name if it exists
+        if ( is_page_template() ) {
+            $classes[] = 'page-template-' . sanitize_html_class( str_replace( '.php', '', get_page_template_slug() ) );
+        }
         // Add the host name as a class to target local vs staging vs production
         $classes[] = str_replace( '.', '-', $_SERVER[ 'HTTP_HOST' ] );
         // $classes[] = 'theme-light color-scheme-default';
