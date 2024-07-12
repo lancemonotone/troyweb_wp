@@ -9,8 +9,8 @@
  *
  * @return void
  */
-function console_log($key, $data = null, bool $to_error_log = false): void {
-    $output = json_encode(! empty($data) ? array($key, $data) : $key);
+function console_log( $key, $data = null, bool $to_error_log = false ): void {
+    $output = json_encode( ! empty( $data ) ? [ $key, $data ] : $key );
     //if ( ! $to_error_log && headers_sent()) {
     echo '<script>';
     echo 'console.log(' . $output . ')';
@@ -22,5 +22,5 @@ function console_log($key, $data = null, bool $to_error_log = false): void {
 
 // Load all classes in the 'classes' folder using glob
 foreach ( glob( get_stylesheet_directory() . "/classes/class.*.php" ) as $filename ) {
-	require_once $filename;
+    require_once $filename;
 }
