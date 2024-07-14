@@ -2,7 +2,7 @@
 
 namespace monotone;
 
-class Blog {
+class Articles {
     public function __construct() {
     }
 
@@ -21,7 +21,7 @@ class Blog {
         }
 
         if ( current_user_can( 'edit_post', $post_id ) ) {
-            $link       = get_edit_post_link( $post_id );
+            $link = get_edit_post_link( $post_id );
             /* translators: Edit Post link text. */
             $aria_label = esc_attr( $alt_text );
             if ( empty( $icon_html ) ) {
@@ -39,23 +39,26 @@ class Blog {
     public static function get_featured_image( int|null $post_id = null ): string {
         $thumbnail_id = get_post_thumbnail_id( $post_id );
         if ( ! $thumbnail_id ) {
-            return ''; // Return empty string if no featured image is set
+            return '';
         }
 
-        $src    = wp_get_attachment_image_url( $thumbnail_id, 'full' ); // Get the full image URL as a fallback
-        $srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'full' ); // Get srcset for responsive images
-        $sizes  = wp_get_attachment_image_sizes( $thumbnail_id, 'full' ); // Get sizes for responsive behavior
-        $alt    = get_post_meta( $thumbnail_id, '_wp_attachment_image_alt', true ); // Get alt text for accessibility
-        $style  = 'height:100px';
+        // Get the full image URL as a fallback
+        $src = wp_get_attachment_image_url( $thumbnail_id, 'full' );
+        // Get srcset for responsive images
+        $srcset = wp_get_attachment_image_srcset( $thumbnail_id, 'full' );
+        // Get sizes for responsive behavior
+        $sizes = wp_get_attachment_image_sizes( $thumbnail_id, 'full' );
+        // Get alt text for accessibility
+        $alt   = get_post_meta( $thumbnail_id, '_wp_attachment_image_alt', true );
+        $style = 'height:100px';
 
         // Construct and return the img tag
         return sprintf(
-            '<img class="w-100 object-fit-cover wp-image-" src="%s" srcset="%s" sizes="%s" alt="%s" style="%s">',
+            '<img class="rounded w-100 wp-image-" src="%s" srcset="%s" sizes="%s" alt="%s">',
             esc_url( $src ),
             esc_attr( $srcset ),
             esc_attr( $sizes ),
             esc_attr( $alt ),
-            esc_attr( $style )
         );
     }
 
@@ -145,7 +148,7 @@ class Blog {
      *
      * @return string  The title of the post wrapped in an anchor tag.
      */
-    public static function get_linked_title( int|null $post_id = null): string {
+    public static function get_linked_title( int|null $post_id = null ): string {
         // Fetch the post title and permalink
         $title     = get_the_title( $post_id );
         $permalink = get_permalink( $post_id );
@@ -228,8 +231,11 @@ class Blog {
      *
      * @return string  The formatted date and author string.
      */
-    public static function get_post_author( int|null $post_id = null ): string {
-        $link_author_name = get_field( 'link_author_name', 'option' ) ?? false;
+    public static function get_post_author( int|null $post_id = null, bool $link_author_name = false ): string {
+        // Override option to link author name
+        if ( ! $link_author_name ) {
+            $link_author_name = get_field( 'link_author_name', 'option' ) ?? false;
+        }
         // Step 1: Check if hide_author_card is false
         $hide_author_card = get_field( 'hide_author_card', $post_id ) ?? false;
         if ( ! $hide_author_card ) {
@@ -324,57 +330,33 @@ class Blog {
         }
 
         // Define the SVG markup
-        $svg = <<<SVG
-<span class="card-link-icon">
-<svg width="54" height="52" viewBox="0 0 54 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="0.0612793" y="0.5" width="53" height="51" rx="25.5" fill="white"></rect>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M33.0613 19.5L33.0613 29.25L30.8946 29.25L30.8946 23.1987L21.9106 32.1827C21.4876 32.6058 20.8016 32.6058 20.3786 32.1827C19.9555 31.7596 19.9555 31.0737 20.3786 30.6506L29.3625 21.6667L23.3113 21.6667L23.3113 19.5L33.0613 19.5Z" fill="#00A3DA"></path>
-</svg>
-</span>
-SVG;
+        $svg_left = SVG_Icons::get_svg( 'ui', 'arrow-left' );
+        $svg_right = SVG_Icons::get_svg( 'ui', 'arrow-right' );
 
-        $output = <<<EOD
-<div class="pagination pagination-single-post">
-EOD;
+        $output = '<div class="d-flex justify-content-center mt-tall">';
+
+        $links = [];
 
         if ( $next_post ) {
             $next_title = get_the_title( $next_post->ID );
             $next_link  = get_permalink( $next_post->ID );
 
-            $output .= <<<EOD
-<a class="nav-left" href="{$next_link}">
-    {$svg} <!-- Embed the SVG here -->
-    {$next_title}
-</a>
-EOD;
-        } else {
-            $output .= <<<EOD
-<div class="nav-left empty-nav"></div>
-EOD;
+            $links []= '<a class="nav-left" href="' . $next_link . '">' . $svg_left .' ' . $next_title . '</a>';
         }
 
         if ( $prev_post ) {
             $prev_title = get_the_title( $prev_post->ID );
             $prev_link  = get_permalink( $prev_post->ID );
 
-            $output .= <<<EOD
-<a class="nav-right" href="{$prev_link}">
-    {$prev_title}
-    {$svg} <!-- Embed the SVG here -->
-</a>
-EOD;
-        } else {
-            $output .= <<<EOD
-<div class="nav-right empty-nav"></div>
-EOD;
+            $links []= '<a class="nav-right" href="' . $prev_link . '">' . $prev_title . ' ' . $svg_right . '</a>';
         }
 
-        $output .= <<<EOD
-</div>
-EOD;
+        $output .= implode( '<span class="px-2"> | </span>', $links );
+
+        $output .= '</div>';
 
         return $output;
     }
 }
 
-new Blog();
+new Articles();
