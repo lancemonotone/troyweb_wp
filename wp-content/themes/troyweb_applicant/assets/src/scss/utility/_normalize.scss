@@ -242,7 +242,7 @@ img {
  * Scale images to fit in containers.
  */
 img[class*=wp-image-]{
-    height: auto;
+    //height: auto;
     max-width: 100%;
 }
 
