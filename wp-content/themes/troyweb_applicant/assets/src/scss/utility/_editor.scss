@@ -1,7 +1,7 @@
 @import "../utility/normalize";
 
 body#tinymce.wp-editor {
-    @import "../utility/typography";
+    @import "reset";
 
     padding-inline: 2rem;
 

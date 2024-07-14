@@ -8,8 +8,8 @@
 // Import site styles
 @import 'scss/utility/functions';
 @import 'scss/utility/normalize';
-@import 'scss/utility/typography';
-@import 'scss/utility/theme';
+@import 'scss/utility/reset';
+//@import 'scss/utility/theme';
 @import 'scss/utility/print';
 @import 'scss/utility/site';
 
@@ -23,5 +23,5 @@
 @import 'scss/modules/header';
 @import 'scss/modules/footer';
 @import 'scss/modules/header-search-form';
-@import 'scss/modules/blog';
+@import 'scss/modules/articles';
 
