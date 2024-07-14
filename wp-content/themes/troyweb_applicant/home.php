@@ -7,7 +7,7 @@ get_header();
     <?php the_archive_title( '<h1>', '</h1>' ); ?>
 
     <?php if ( $description = get_the_archive_description() ) { ?>
-        <div class="archive-description"><?= wp_kses_post( wpautop( $description ) ) ?></div>
+        <div><?= wp_kses_post( wpautop( $description ) ) ?></div>
     <?php } ?>
 
     <?php get_template_part( 'parts/blog_posts' ); ?>
