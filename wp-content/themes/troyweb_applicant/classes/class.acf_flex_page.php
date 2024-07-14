@@ -2,9 +2,6 @@
 
 class ACF_Flex_Page {
     public static string $template_path = 'layouts/';
-    public static array $templates = [
-        'template-flex-page.php'
-    ];
 
     public function __construct() {
         add_action( 'admin_head', [ $this, 'collapse_layout_fields' ] );
@@ -15,25 +12,6 @@ class ACF_Flex_Page {
         // Add AJAX actions for getting layout thumbnails
         add_action( 'wp_ajax_get_layout_thumbnail', [ $this, 'ajax_get_layout_thumbnail' ] );
         add_action( 'wp_ajax_nopriv_get_layout_thumbnail', [ $this, 'ajax_get_layout_thumbnail' ] );
-
-        // Disable Gutenberg for Flex Page templates (see $templates array above)
-        add_filter( 'use_block_editor_for_post_type', [ $this, 'disable_gutenberg' ], 10, 2 );
-    }
-
-    /**
-     * Disable Gutenberg for Flex Page templates.
-     *
-     * @param $is_enabled
-     * @param $post_type
-     *
-     * @return bool|mixed
-     */
-    public function disable_gutenberg( $is_enabled, $post_type ) {
-        if ( class_exists( 'monotone\DisableGutenberg' ) ) {
-            return DisableGutenberg::disable_gutenberg( $is_enabled, $post_type, self::$templates );
-        }
-
-        return $is_enabled;
     }
 
     /**
@@ -308,7 +286,7 @@ class ACF_Flex_Page {
                 }
 
                 // Add a clickable link to the last acf-actions on the page
-                let acfActions = document.querySelectorAll('.acf-actions')
+                let acfActions = document.querySelectorAll('.acf-flexible-content .acf-actions')
                 let lastAcfActions = acfActions[acfActions.length - 1]
                 if (lastAcfActions) {
                     lastAcfActions.innerHTML += button
