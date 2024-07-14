@@ -10,6 +10,7 @@ class Custom_Taxonomies {
             'args'       => [
                 'public'            => true,
                 'show_ui'           => true,
+                'meta_box_cb'       => false,
                 'show_in_nav_menus' => true,
                 'show_tagcloud'     => true,
                 'show_admin_column' => true,
@@ -24,6 +25,7 @@ class Custom_Taxonomies {
             'args'       => [
                 'public'            => true,
                 'show_ui'           => true,
+                'meta_box_cb'       => false,
                 'show_in_nav_menus' => true,
                 'show_tagcloud'     => true,
                 'show_admin_column' => true,
@@ -38,6 +40,7 @@ class Custom_Taxonomies {
             'args'       => [
                 'public'            => true,
                 'show_ui'           => true,
+                'meta_box_cb'       => false,
                 'show_in_nav_menus' => true,
                 'show_tagcloud'     => true,
                 'show_admin_column' => true,
@@ -80,6 +83,7 @@ class Custom_Taxonomies {
             'labels'            => $labels,
             'public'            => $taxonomy[ 'args' ][ 'public' ],
             'show_ui'           => $taxonomy[ 'args' ][ 'show_ui' ],
+            'meta_box_cb'       => null,
             'show_in_nav_menus' => $taxonomy[ 'args' ][ 'show_in_nav_menus' ],
             'show_tagcloud'     => $taxonomy[ 'args' ][ 'show_tagcloud' ],
             'show_admin_column' => $taxonomy[ 'args' ][ 'show_admin_column' ],

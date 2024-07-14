@@ -60,7 +60,7 @@ class Custom_Post_Types {
 
         $default_args = [
             'labels'             => $labels,
-            'description'        => sprintf( __( 'Description for %s', 'monotone' ), $post_type[ 'singular' ] ),
+            'description'        => '',
             'public'             => $post_type[ 'args' ][ 'public' ],
             'publicly_queryable' => $post_type[ 'args' ][ 'public' ],
             'show_ui'            => true,
