@@ -30,8 +30,11 @@ main .container :is(div, pre, h1, h2, h3, h4, h5, h6, p, section, article, heade
     margin-block-start: 1.5rem;
 }
 
-.d-grid * + * {
-    margin-inline-start: 0 !important;
+.d-grid,
+.d-flex {
+    * + * {
+        margin-block-start: 0 !important;
+    }
 }
 
 p {
