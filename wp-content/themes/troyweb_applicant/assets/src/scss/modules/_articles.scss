@@ -26,6 +26,12 @@ article {
     }
 }
 
+.archive.post-type-archive-core-value {
+    .post-excerpt p {
+        @extend .text-center;
+    }
+}
+
 .blog-posts {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 
