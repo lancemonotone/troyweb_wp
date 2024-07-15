@@ -17,15 +17,22 @@ See the theme's README.md file for more information on this theme's features.
    git clone https://github.com/lancemonotone/troyweb_wp.git
    ```
    
-2. **Navigate to the Project Directory:**
+1. **Navigate to the Project Directory:**
    ```bash
    cd troyweb_wp
    ```
    
-3. **Install Dependencies using Composer:**
+1. **Install Dependencies using Composer:**
    ```bash
    composer install
    ```
+
+1. **Create a Database:**
+    Create a new database for the WordPress site. The database file is located in the `wp-content/database` directory.
+
+
+5. **Create a `.env` File:**
+   Create a `.env` file in the root directory of the project. This file holds the database credentials and site url values. See the section below for more information on the `.env` file.
 
 ## Why use a `.env` File?
 The `.env` file is used to keep sensitive configuration information separate from the codebase and repository. It also makes migrating the site to a new environment easy.
@@ -35,9 +42,9 @@ The `.env` file is used to keep sensitive configuration information separate fro
 2. Set the environment variables to the appropriate values for your site. 
 
    ```plaintext
-    WP_ENV=[local, development, production]
-    WP_HOME=[https://somesite.com]
-    WP_SITEURL=[https://somesite.com]
+    WP_ENV=[local|development|production]
+    WP_HOME=[https://yoursite.com]
+    WP_SITEURL=[https://yoursite.com]
     TABLE_PREFIX=[wp_]
     DB_NAME=[my_database]
     DB_USER=[my_username]
