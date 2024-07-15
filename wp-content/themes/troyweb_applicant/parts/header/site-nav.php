@@ -4,7 +4,7 @@
 /* translators: Primary Menu text. */
 esc_attr_e( 'Primary menu', 'monotone' );
 ?>">
-    <div class="d-flex justify-content-between align-items-center w-100 w-lg-auto">
+    <div class="d-flex justify-content-between align-items-center w-100 w-lg-25 w-xl-auto">
         <div class="navbar-brand">
             <?php Branding::get_site_logo(); ?>
         </div>
