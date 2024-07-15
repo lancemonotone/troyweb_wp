@@ -57,6 +57,7 @@ class Theme {
         if ( is_page_template() ) {
             $classes[] = 'page-template-' . sanitize_html_class( str_replace( '.php', '', get_page_template_slug() ) );
         }
+
         // Add the host name as a class to target local vs staging vs production
         $classes[] = str_replace( '.', '-', $_SERVER[ 'HTTP_HOST' ] );
         // $classes[] = 'theme-light color-scheme-default';
