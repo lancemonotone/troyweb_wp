@@ -11,9 +11,9 @@ $translated_plural = __( $plural, 'monotone' );
 
 $args = [
     'hide_fields' => [
-        // 'date',
+        'date',
         // 'title',
-        // 'author',
+        'author',
         // 'img',
         // 'excerpt',
         // 'readmore',
