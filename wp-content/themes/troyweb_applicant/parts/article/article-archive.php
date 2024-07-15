@@ -38,7 +38,7 @@ $default_hide = [
 $hide = wp_parse_args( $args[ 'hide_fields' ] ?? [], $default_hide );
 ?>
 
-<div class="blog-posts d-grid column-gap-5">
+<div class="articles d-grid column-gap-5">
 
     <?php while ( have_posts() ) {
         the_post();

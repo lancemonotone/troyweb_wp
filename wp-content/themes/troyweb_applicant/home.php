@@ -1,13 +1,7 @@
 <?php namespace monotone;
 
-// Get the post type object
-$post_type_obj = get_post_type_object( get_post_type() );
-
-// Check if the post type object exists and get the plural label
-$plural = $post_type_obj ? $post_type_obj->labels->name : '';
-
-// Translate the plural label
-$translated_plural = __( $plural, 'monotone' );
+// Instead of using the post type, we'll use the archive title
+$title = get_the_archive_title();
 
 $args = [
     'hide_fields' => [
@@ -25,7 +19,7 @@ get_header();
 ?>
     <?php if ( have_posts() ) { ?>
 
-    <h1><?= esc_html( $translated_plural ) ?></h1>
+    <h1 class="archive-title"><?= $title ?></h1>
 
     <?php if ( $description = get_the_archive_description() ) { ?>
         <div><?= wp_kses_post( wpautop( $description ) ) ?></div>
@@ -37,7 +31,7 @@ get_header();
 
     <p><?=
         /* translators: Nothing found text. */
-        esc_html__( sprintf( 'No %s found.', $translated_plural ), 'monotone' ) ?>
+        esc_html__( sprintf( 'No %s found.', $title ), 'monotone' ) ?>
     </p>
 
 <?php } ?>
