@@ -1,8 +1,8 @@
 # Environment variables
-.env
+#.env
 
 # Build files
-wp-content/themes/troyweb_applicant/assets/build*/
+#wp-content/themes/troyweb_applicant/assets/build*/
 
 # Unwanted files excluded for security reasons
 readme.html

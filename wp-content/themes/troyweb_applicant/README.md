@@ -68,7 +68,7 @@ npm run editor
 npm run admin
 ```
 
-You can build all the assets at once by running the following command:
+You can build all the assets at once (with no watch) by running the following command:
 
 ```bash
 npm run build-all

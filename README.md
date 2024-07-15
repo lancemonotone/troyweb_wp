@@ -8,7 +8,7 @@ Advanced Custom Fields (ACF) Flexible Content fields. This feature requires ACF 
 assign the "Flex Page Template" to a page in the WordPress admin. There is an example page at 
 `https://this-site.com/flex-page-example` that demonstrates the Flex Page Template in action. This feature isn't required for the assessment but is included for reference.
 
-See the theme's README.md file for more information on this theme's features.
+#### <span style="color:indianred">See the theme's README.md file for more information on how to build the assets and use this theme's features.</span>
 
 ### Setup Instructions:
 
@@ -34,8 +34,17 @@ See the theme's README.md file for more information on this theme's features.
 5. **Create a `.env` File:**
    Create a `.env` file in the root directory of the project. This file holds the database credentials and site url values. See the section below for more information on the `.env` file.
 
+6. **Build the theme assets:** Navigate to the `wp-content/themes/troyweb_applicant/assets` directory and run the following command:
+   ```bash
+   npm install
+   npm run build-all
+   ```
+
+#### <span style="color:indianred">Note: For this assessment, the `.env` and theme asset `build` are included in the repository and not ignored in `.gitignore`. This is not recommended for a production site but is done here to simplify the evaluation process.</span>
+
 ## Why use a `.env` File?
 The `.env` file is used to keep sensitive configuration information separate from the codebase and repository. It also makes migrating the site to a new environment easy.
+
 
 ### Create and Populate `.env` File:
 1. Create a new `.env` file in the root directory of the project.
