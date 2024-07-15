@@ -1,7 +1,7 @@
 <?php namespace monotone;
 
-// Instead of using the post type, we'll use the archive title
-$title = get_the_archive_title();
+// Instead of using archive title, we'll explicitly set the title
+$title = 'Articles';
 
 $args = [
     'hide_fields' => [
