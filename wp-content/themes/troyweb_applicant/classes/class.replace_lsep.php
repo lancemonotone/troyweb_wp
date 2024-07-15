@@ -5,8 +5,9 @@ namespace monotone;
 /**
  * Class Replace_Lsep
  *
- * The L-SEP character can appear in text copied from certain applications or platforms, causing layout issues.
- * This class automatically replaces any L-SEP characters with a replacement string to ensure proper formatting.
+ * The L-SEP character can appear in text copied from certain applications or platforms,
+ * causing layout issues. This class automatically replaces any L-SEP characters with a
+ * replacement string to ensure proper formatting.
  */
 class Replace_Lsep {
 	var $lsep = "\u{2028}";
