@@ -3,9 +3,9 @@
 class Custom_Taxonomies {
     public array $taxonomies = [
         [
-            'slug'       => 'skill',
-            'singular'   => 'Skill',
-            'plural'     => 'Skills',
+            'slug'       => 'species',
+            'singular'   => 'Species',
+            'plural'     => 'Species',
             'post_types' => [ 'applicant' ],
             'args'       => [
                 'public'            => true,
@@ -20,7 +20,7 @@ class Custom_Taxonomies {
         [
             'slug'       => 'experience',
             'singular'   => 'Experience',
-            'plural'     => 'Experiences',
+            'plural'     => 'Experience',
             'post_types' => [ 'applicant' ],
             'args'       => [
                 'public'            => true,
@@ -33,9 +33,9 @@ class Custom_Taxonomies {
             ]
         ],
         [
-            'slug'       => 'species',
-            'singular'   => 'Species',
-            'plural'     => 'Species',
+            'slug'       => 'skill',
+            'singular'   => 'Skill',
+            'plural'     => 'Skills',
             'post_types' => [ 'applicant' ],
             'args'       => [
                 'public'            => true,
@@ -46,7 +46,7 @@ class Custom_Taxonomies {
                 'show_admin_column' => true,
                 'hierarchical'      => false,
             ]
-        ]
+        ],
     ];
 
     public function __construct() {
