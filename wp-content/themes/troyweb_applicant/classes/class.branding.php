@@ -31,15 +31,18 @@ class Branding {
 	 *
 	 * @param $wp_customize
 	 */
-	function add_footer_custom_logo($wp_customize) {
-		$wp_customize->add_setting('footer_logo'); // Add setting for footer logo uploader
-		$wp_customize->add_control(new \WP_Customize_Image_Control($wp_customize, 'footer_logo', array(
-			'label'    => __('Footer Logo'),
-			'section'  => 'title_tagline', // Add in default WordPress customizer section
-			'settings' => 'footer_logo',
-			'priority' => 8, // Set the priority so it's higher than the custom-logo
-		)));
-	}
+    function add_footer_custom_logo($wp_customize) {
+        $wp_customize->add_setting('footer_logo'); // Add setting for footer logo uploader
+
+        // Updated to use WP_Customize_Media_Control
+        $wp_customize->add_control(new \WP_Customize_Media_Control($wp_customize, 'footer_logo', array(
+            'label'    => __('Footer Logo'),
+            'section'  => 'title_tagline', // Add in default WordPress customizer section
+            'settings' => 'footer_logo',
+            'mime_type' => 'image', // Ensure only images can be uploaded
+            'priority' => 8, // Set the priority so it's higher than the custom-logo
+        )));
+    }
 
 	/**
 	 * Add a second logo to the WordPress Customizer
