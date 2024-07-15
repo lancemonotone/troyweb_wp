@@ -17,7 +17,7 @@ $query->the_post();
 
 get_header(); ?>
 
-<?php get_template_part( 'parts/single_post' ); ?>
+<?php get_template_part( 'parts/article/article-single' ); ?>
 
 <?php wp_reset_postdata() ?>
 
