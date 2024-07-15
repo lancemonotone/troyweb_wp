@@ -242,8 +242,43 @@ img {
  * Scale images to fit in containers.
  */
 img[class*=wp-image-]{
-    //height: auto;
+    height: auto;
     max-width: 100%;
+}
+figure,
+img {
+    margin: 0;
+}
+.wp-block-image{
+    &:has(figure.aligncenter){
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    &:has(figure.alignright) {
+        float: right;
+        margin-left: 24px;
+    }
+    &:has(figure.alignleft) {
+        float: left;
+        margin-right: 24px;
+    }
+}
+figure.aligncenter,
+img.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+figure.alignright,
+img.alignright {
+    float: right;
+    margin-left: 24px;
+}
+figure.alignleft,
+img.alignleft {
+    float: left;
+    margin-right: 24px;
 }
 
 // https://wordpress.stackexchange.com/questions/107358/make-wordpress-image-captions-responsive#answer-107361
