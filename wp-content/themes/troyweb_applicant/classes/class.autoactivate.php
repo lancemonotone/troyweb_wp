@@ -9,7 +9,7 @@ namespace monotone;
 class Autoactivate {
 	private static array $plugins = [
 		'advanced-custom-fields-pro/acf.php',
-		// 'autoptimize/autoptimize.php',
+		'autoptimize/autoptimize.php',
 		// 'classic-editor/classic-editor.php',
 	];
 
