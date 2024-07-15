@@ -12,6 +12,13 @@ assign the "Flex Page Template" to a page in the WordPress admin. There is an ex
 
 ### Setup Instructions:
 
+1. **Admin User Credentials:**
+   The admin user credentials for the WordPress site are:
+   ```plaintext
+   Username: admin
+   Password: password
+   ```
+
 1. **Clone the Git Repository:**
    ```bash
    git clone https://github.com/lancemonotone/troyweb_wp.git
@@ -31,10 +38,10 @@ assign the "Flex Page Template" to a page in the WordPress admin. There is an ex
     Create a new database for the WordPress site. The database file is located in the `wp-content/database` directory.
 
 
-5. **Create a `.env` File:**
+1. **Create a `.env` File:**
    Create a `.env` file in the root directory of the project. This file holds the database credentials and site url values. See the section below for more information on the `.env` file.
 
-6. **Build the theme assets:** Navigate to the `wp-content/themes/troyweb_applicant/assets` directory and run the following command:
+1. **Build the theme assets:** Navigate to the `wp-content/themes/troyweb_applicant/assets` directory and run the following command:
    ```bash
    npm install
    npm run build-all
