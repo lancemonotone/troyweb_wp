@@ -1,5 +1,17 @@
 <?php namespace monotone;
 
+$args = [
+    'hide_fields' => [
+        // 'date',
+        // 'title',
+        // 'author',
+        // 'img',
+        // 'excerpt',
+        // 'readmore',
+        //  [taxonomy-slugs (category, post_tag, etc.)],
+    ],
+];
+
 get_header(); ?>
 
     <h1>
@@ -33,6 +45,6 @@ get_header(); ?>
         </div>
     </div>
 
-    <?php get_template_part( 'parts/blog_posts' ); ?>
+    <?php get_template_part( 'parts/article/article-archive', null, $args ); ?>
 
 <?php get_footer();

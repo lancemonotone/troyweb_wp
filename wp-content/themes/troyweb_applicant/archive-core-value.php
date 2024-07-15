@@ -12,15 +12,12 @@ $translated_plural = __( $plural, 'monotone' );
 $args = [
     'hide_fields' => [
         'date',
+        'title',
+        'author',
         // 'img',
         // 'excerpt',
-        // 'readmore',
-        'author',
-        // 'skill',
-        // 'experience',
-        // 'species',
-        // 'categories',
-        // 'tags'
+        'readmore',
+        //  [taxonomy-slugs (category, post_tag, etc.)],
     ],
 ];
 
@@ -34,7 +31,7 @@ get_header();
         <div><?= wp_kses_post( wpautop( $description ) ) ?></div>
     <?php } ?>
 
-    <?php get_template_part( 'parts/blog_posts', null, $args ); ?>
+    <?php get_template_part( 'parts/article/article-archive', null, $args ); ?>
 
 <?php } else { ?>
 
