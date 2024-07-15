@@ -35,10 +35,12 @@ The theme's functionality is organized into classes, each residing in the `class
 - `Blog`: Handles the blog functionality and rewrite rules.
 - `Branding`: Adds custom branding options to the Customizer.
 - `Constants`: Defines the theme's constants.
+- `Custom Post Types`: Registers the theme's custom post types.
+- `Custom Taxonomies`: Registers the theme's custom taxonomies.
 - `Disable Gutenberg`: Disables the Gutenberg editor for specific post types and page templates.
 - `Images`: Handles the image sizes, conversion to WEBP, and responsive image markup.
 - `Navigation`: Handles the navigation menus.
-- `Replace LSEP`: Replaces the line separator character with a space.
+- `Replace LSEP`: Replaces the line separator character with a break.
 - `Shortcodes`: Adds custom shortcodes to the MCE editor.
 - `SVG Icons`: Adds a library of SVG icons to the theme.
 - `Theme:`: Handles the theme's setup and configuration.
